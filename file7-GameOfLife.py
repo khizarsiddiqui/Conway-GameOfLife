@@ -37,5 +37,24 @@ def addGlider(i, j, grid):
 grid = np.zeros(N*N).reshape(N, N)
 addGlider(1, 1, grid)
 
+# now we can think about how to implement the toroidal boundary conditions (step 4)
+
+def update(frameNum, img, grid, N):
+# copy grid since we require 8 neighbors for calculation
+# and we go line by line
+    newGrid = grid.copy()
+    for i in range(N):
+        for j in range(N):
+# compute 8-neighbor sum using toroidal boundary conditions
+# x and y wrap around so that the simulation
+# takes place on a toroidal surface
+            total = int((grid[i, (j-1)%N] + grid[i, (j+1)%N] +
+                        grid[(i-1)%N, j] + grid[(i+1)%N, j] +
+                        grid[(i-1)%N, (j-1)%N] + grid[(i-1)%N, (j+1)%N] +
+                        grid[(i+1)%N, (j-1)%N] + grid[(i+1)%N, (j+1)%N])/255)
+
+# to be continued
+    
+
 
 
