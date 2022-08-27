@@ -23,7 +23,9 @@ import matplotlib.animation as animation
 # now creating glider (step 3) 
 
 N = 50
-
+ON = 255
+OFF = 0
+vals = [ON, OFF]
 def addGlider(i, j, grid):
 
 # adds a glider with top left cell at (i, j)
@@ -53,8 +55,20 @@ def update(frameNum, img, grid, N):
                         grid[(i-1)%N, (j-1)%N] + grid[(i-1)%N, (j+1)%N] +
                         grid[(i+1)%N, (j-1)%N] + grid[(i+1)%N, (j+1)%N])/255)
 
-# to be continued
+# applying conway's rules (step 5)
+
+# any cell that is ON is turned OFF if it has fewer than two neighbors that are ON or if it has more than three neighbors that are ON.
+            if grid[i, j] == ON:
+                if (total < 2) or (total > 3):
+                    newGrid[i, j] = OFF
+
+# applies only to OFF cells: a cell is turned ON if exactly three neighbors are ON.
+            else:
+                if total == 3:
+                    newGrid[i, j] = ON
+
+# update data
+            img.set_data(newGrid)
+            grid[:] = newGrid[:]
+            return img,
     
-
-
-
