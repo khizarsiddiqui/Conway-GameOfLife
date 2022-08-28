@@ -8,6 +8,7 @@
 
 # first, displaying a grid of values
 
+import sys, argparse
 import numpy as np
 import matplotlib.pyplot as plt 
 import matplotlib.animation as animation
@@ -72,3 +73,18 @@ def update(frameNum, img, grid, N):
             grid[:] = newGrid[:]
             return img,
     
+# Sending Command Line Arguments to the Program (step 6)
+# main() function
+
+def main():
+# command line arguments are in sys.argv[1], sys.argv[2], ...
+# sys.argv[0] is the script name and can be ignored
+# parse arguments
+      parser = argparse.ArgumentParser(description="Runs Conway's Game of Life simulation.")
+# add arguments
+      parser.add_argument('--grid-size', dest='N', required=False)
+      parser.add_argument('--mov-file', dest='movfile', required=False)
+      parser.add_argument('--interval', dest='interval', required=False)
+      parser.add_argument('--glider', action='store_true', required=False)
+      parser.add_argument('--gosper', action='store_true', required=False)
+      args = parser.parse_args()
