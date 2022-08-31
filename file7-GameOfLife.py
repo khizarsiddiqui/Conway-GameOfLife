@@ -48,7 +48,7 @@ def addGosperGun(i, j, grid):
                           [0 , 0 , 0 ,0, 255, 0, 0, 0 ,255, 0 ,0,0, 0 , 0 ,0 ,255, 0, 0, 0 , 0 , 0, 0],
                           [0 , 0 , 0 ,0, 0, 255, 255, 0 ,0, 0 ,0,0, 0 , 0 ,0 ,0, 0 , 255, 0, 0 , 0 , 0],
                           [0 , 0 , 0 ,0, 0, 0, 0, 0 ,0, 0 ,0,0, 0 , 0 ,0 ,0, 0 , 255, 0, 0 , 0 , 0]])
-      grid[i:i+13, j:j+21] = glider
+      grid[i:i+13, j:j+21] = gosperGun
       # plt.imshow(glider)
 
 def update(frameNum, img, grid, N):
